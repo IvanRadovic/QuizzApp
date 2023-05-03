@@ -12,6 +12,7 @@ const Quiz = ({ questions }) => {
     const [answer, setAnswer] = useState(null);
     const [result, setResult] = useState(resultInitalState);
     const [showResult, setShowResult] = useState(false);
+    const [showAnswerTimer, setShowAnswerTimer] = useState(true);
   
     const { question, choices, correctAnswer } = questions[currentQuestion];
   
@@ -30,6 +31,7 @@ const Quiz = ({ questions }) => {
     /* --- Click next -- For next question ---- */
     const onClickNext = (finalAnswer) => {
       setAnswerIdx(null);
+      setShowAnswerTimer(false);
       setResult((prev) =>
         answer
           ? {
@@ -49,6 +51,10 @@ const Quiz = ({ questions }) => {
         setCurrentQuestion(0);
         setShowResult(true);
       }
+
+      setTimeout(() => {
+        setShowAnswerTimer(true)
+      })
     };
   
 
@@ -69,7 +75,7 @@ const Quiz = ({ questions }) => {
       <div className="quiz-container">
         {!showResult ? (
           <>
-          <AnswerTimer duration={10} onTimeUp={handleTimeUp} />
+          {showAnswerTimer && <AnswerTimer duration={5} onTimeUp={handleTimeUp} />}
             <span className="active-question-no">{currentQuestion + 1}</span>
             <span className="total-question">/{questions.length}</span>
             <h2>{question}</h2>
