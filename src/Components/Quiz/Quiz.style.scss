@@ -94,4 +94,13 @@
         }
     }
 
+    input{
+        border: 1px solid $disabled;
+        border-radius: 5px;
+        padding: 10px 20px;
+        width: 100%;
+        margin-top: 20px;
+        box-sizing: border-box;
+    }
+
 }
