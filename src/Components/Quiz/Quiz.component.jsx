@@ -3,6 +3,7 @@ import { resultInitalState } from "../../Constants/constats";
 
 import "./Quiz.style.scss";
 import AnswerTimer from "../AnswerTimer/AnswerTimer.component";
+import Result from "../Result/Result.component";
 
 
 const Quiz = ({ questions }) => {
@@ -33,6 +34,7 @@ const Quiz = ({ questions }) => {
     const onClickNext = (finalAnswer) => {
       setAnswerIdx(null);
       setShowAnswerTimer(false);
+      setInputAnswer("");
       setResult((prev) =>
         answer
           ? {
@@ -122,22 +124,7 @@ const Quiz = ({ questions }) => {
             </div>
           </>
         ) : (
-          <div className="result">
-            <h3>Result</h3>
-            <p>
-              Total Questions: <span>{questions.length}</span>
-            </p>
-            <p>
-              Total Score: <span>{result.score}</span>
-            </p>
-            <p>
-              Correct Answers: <span>{result.correctAnswers}</span>
-            </p>
-            <p>
-              Wrong Answers: <span>{result.wrongAnswers}</span>
-            </p>
-            <button onClick={onTryAgain}>Try again</button>
-          </div>
+          <Result result={result} onTryAgain={onTryAgain} totalQuestions={questions.length} />
         )}
       </div>
     );

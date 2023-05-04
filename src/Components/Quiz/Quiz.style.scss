@@ -74,26 +74,6 @@
         }
     }
 
-    .result {
-        text-align: center;
-    
-        h3 {
-            font-size: 24px;
-            letter-spacing: 1.4px;
-            text-align: center;
-        }
-
-        p {
-            font-size: 16px;
-            font-weight: 500;
-
-            span{
-                color:$primary;
-                font-size: 22px;
-            }
-        }
-    }
-
     input{
         border: 1px solid $disabled;
         border-radius: 5px;
