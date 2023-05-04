@@ -34,6 +34,7 @@ const Quiz = ({ questions }) => {
     const onClickNext = (finalAnswer) => {
       setAnswerIdx(null);
       setShowAnswerTimer(false);
+      setInputAnswer("");
       setResult((prev) =>
         answer
           ? {
