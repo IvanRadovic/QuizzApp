@@ -1,9 +1,29 @@
 import Quiz from './Components/Quiz/Quiz.component'
-import { jsQuizz } from "./Constants/constats";
+import { useEffect, useState } from 'react';
 
 function App() {
+  
+  const [ questions, setQuestions] = useState([]);
+
+
+  /* --- Fetching questions ---- */
+  const getQuestions = async () => {
+    try {
+      const response = await fetch("https://644982a3e7eb3378ca4ba471.mockapi.io/questions");
+      const questionsResponse = await response.json();
+      setQuestions(questionsResponse);
+    } catch (error) {
+      console.log(error);
+    } 
+  }
+
+  useEffect(() => {
+    getQuestions();
+  },[])
+
+
   return (
-    <Quiz questions={jsQuizz.questions}/>
+     questions.length && <Quiz questions={questions}/>
   )
 }
 
